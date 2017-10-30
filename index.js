@@ -73,7 +73,7 @@ function parsePythonConf(str, cb) {
 }
 
 function toPyVal(val) {
-  if (null === val) {
+  if (null === val || '' === val) {
     return 'None';
   }
   else if (true === val) {
@@ -119,7 +119,7 @@ function stringifyPythonConf(obj, cb) {
 
     if ('undefined' === typeof pyval) {
       if ('number' === typeof num) {
-        pyval = '';
+        pyval = 'None';
       } else {
         return;
       }
